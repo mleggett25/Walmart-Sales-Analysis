@@ -61,4 +61,10 @@ walmart_data['Holiday_Week'] = walmart_data['Holiday_Flag'].apply(applyHoliday)
 walmart_data = walmart_data.drop('Holiday_Flag', axis=1)
 ```
 
+I then exported the cleaned data to a CSV file. The data is now ready for import into a SQL database.
+
+```
+walmart_data.to_csv('Walmart_Clean.csv', index=False)
+```
+
 
