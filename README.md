@@ -12,4 +12,4 @@ The dataset provided shows sales data for 45 Walmart stores. The data also provi
 
 The dataset includes 8 variables and 6435 samples.
 
-![Data Dictionary](Images/walmart_data_dictionary.PNG)
+![Data Dictionary](Images/walmart_data_dictionary.png)
