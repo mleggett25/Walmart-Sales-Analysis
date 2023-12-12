@@ -44,7 +44,7 @@ Luckily, there were no missing values in the data. I then checked the 'Holiday_F
 walmart_data['Holiday_Flag'].unique()
 ```
 
-Since it was a boolean field, I created a new column called 'Holiday_Week' to convert the 'Holiday_Flag' variable from an integer to an object. I replaced the 1 and 0 values with the actualy text of what they signified - Holiday Week and Not Holiday Week respectively. I then dropped the 'Holiday_Flag' variable. This will help make the data more readable and easier to understand for data visualizations.
+Since it was a boolean field, I created a new column called 'Holiday_Week' to convert the 'Holiday_Flag' variable from an integer to an object. I replaced the 1 and 0 values with the actual text of what they signified - Holiday Week and Not Holiday Week respectively. I then dropped the 'Holiday_Flag' variable. This will help make the data more readable and easier to understand for data visualizations.
 
 ```
 # Create new column Holiday_Week to convert Holiday_Flag variable from integer to object, then drop Holiday_Flag
