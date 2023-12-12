@@ -13,3 +13,7 @@ The dataset provided shows sales data for 45 Walmart stores. The data also provi
 The dataset includes 8 variables and 6435 samples.
 
 ![Data Dictionary](Images/walmart_data_dictionary.png)
+
+## Data Cleaning
+
+To prepare the data for importation and analysis in a SQL database, I first inspected the data using Python and cleaned the data as necessary.
