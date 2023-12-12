@@ -68,4 +68,19 @@ I then exported the cleaned data to a CSV file. The data is now ready for import
 walmart_data.to_csv('Walmart_Clean.csv', index=False)
 ```
 
+## Data Exploration
 
+Using PostgreSQL, I created a 'walmartdata' table and then imported the 'Walmart_Clean.csv' file into the table.
+
+```
+CREATE TABLE walmartData (
+	Store int,
+	Date date,
+	Weekly_Sales float,
+	Temperature float,
+	Fuel_Price float,
+	CPI float,
+	Unemployment float,
+	Holiday_Week varchar
+)
+```
