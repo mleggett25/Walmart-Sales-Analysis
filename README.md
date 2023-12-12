@@ -37,7 +37,7 @@ for col in walmart_data.columns.tolist():
 
 ![Missing Values](Images/walmart_missing_values.png)
 
-Luckily, there were no missing values and the data. I then checked the 'Holiday_Flag' variable to make sure that it was indeed a boolean field and only held two values.
+Luckily, there were no missing values in the data. I then checked the 'Holiday_Flag' variable to make sure that it was indeed a boolean field and only held two values.
 
 ```
 # Check Holiday_Flag unique values
