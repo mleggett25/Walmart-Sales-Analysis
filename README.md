@@ -16,4 +16,49 @@ The dataset includes 8 variables and 6435 samples.
 
 ## Data Cleaning
 
-To prepare the data for importation and analysis in a SQL database, I first inspected the data using Python and cleaned the data as necessary.
+To prepare the data for importation and analysis in a SQL database, I first inspected the data using Python and cleaned the data as necessary. I used the 'dtypes' attribute to check the datatypes for each variable.
+
+![Datatypes](Images/walmart_datatypes.png)
+
+This shows that the 'Date' variable is currently an object type and not datetime. On closer inspection of the dates, there is inconsistent formatting as well. I changed the 'Data' datatype from object to datetime while also standardizing the formatting of the dates.
+
+```
+# Change Date datatype from object to date
+walmart_data['Date'] = pd.to_datetime(walmart_data['Date'])
+```
+
+I then checked for missing values to see if there were any gaps in the data.
+
+```
+# Check for missing values
+for col in walmart_data.columns.tolist():
+  print('{} column missing values: {}'.format(col, walmart_data[col].isnull().sum()))
+```
+
+![Missing Values](Images/walmart_missing_values.png)
+
+Luckily, there were no missing values and the data. I then checked the 'Holiday_Flag' variable to make sure that it was indeed a boolean field and only held two values.
+
+```
+# Check Holiday_Flag unique values
+walmart_data['Holiday_Flag'].unique()
+```
+
+I created a new column called 'Holiday_Week' to convert the 'Holiday_Flag' variable from an integer to an object. I then dropped the 'Holiday_Flag' variable. This will help make the data more readable and easier to understand for data visualizations.
+
+```
+# Create new column Holiday_Week to convert Holiday_Flag variable from integer to object, then drop Holiday_Flag
+walmart_data['Holiday_Week'] = ''
+
+def applyHoliday(h):
+  if h == 1:
+    return 'Holiday Week'
+  else:
+    return 'Not Holiday Week'
+
+walmart_data['Holiday_Week'] = walmart_data['Holiday_Flag'].apply(applyHoliday)
+
+walmart_data = walmart_data.drop('Holiday_Flag', axis=1)
+```
+
+
