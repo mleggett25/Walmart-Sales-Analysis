@@ -84,3 +84,5 @@ CREATE TABLE walmartData (
 	Holiday_Week varchar
 )
 ```
+
+I then wrote a query to produce some summary statistics using the UNION argument.
