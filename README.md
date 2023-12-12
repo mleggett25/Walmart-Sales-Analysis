@@ -64,6 +64,7 @@ walmart_data = walmart_data.drop('Holiday_Flag', axis=1)
 I then exported the cleaned data to a CSV file. The data is now ready for import into a SQL database.
 
 ```
+# Export cleaned data to CSV
 walmart_data.to_csv('Walmart_Clean.csv', index=False)
 ```
 
