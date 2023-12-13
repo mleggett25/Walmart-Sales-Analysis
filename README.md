@@ -273,7 +273,7 @@ GROUP BY Store)
 WHERE Total_Revenue < 85365979.53
 ```
 
-For each of these tables, I then created a 'performance' column and filled the values with either 'High', 'Mid-High', 'Mid-Low', or 'Low' depending on the respective table.
+For each of these tables, I created a 'performance' column and filled the values with either 'High', 'Mid-High', 'Mid-Low', or 'Low' depending on the respective table.
 
 ```
 ALTER TABLE high_performance_stores
@@ -307,6 +307,33 @@ ADD Performance varchar(255)
 UPDATE low_performance_stores
 SET performance = 'Low'
 ```
+
+Using the UNION argument, I joined the four tables into one table called 'store_performance.'
+
+```
+SELECT * INTO Store_Performance
+FROM
+(SELECT * FROM high_performance_stores
+UNION
+SELECT * FROM mid_high_performance_stores
+UNION
+SELECT * FROM mid_low_performance_stores
+UNION
+SELECT * FROM low_performance_stores)
+```
+
+I then finished by creating a table called 'Walmart_Store_Data.' This table was created by using a LEFT JOIN of the 'store_performance' table onto the 'walmart_data' table.
+
+```
+CREATE TABLE walmart_store_data AS (
+SELECT wd.store, wd.date, wd.weekly_sales, wd.temperature, wd.fuel_price, wd.cpi, wd.unemployment, wd.holiday_week, sp.performance
+FROM walmartdata AS wd
+LEFT JOIN store_performance AS sp
+ON wd.store = sp.store
+)
+```
+
+With this new data table, the data is ready for export into an Excel file and ready for visualizations and analysis.
 
 
 
