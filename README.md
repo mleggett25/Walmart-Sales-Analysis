@@ -92,4 +92,30 @@ CREATE TABLE walmartData (
 )
 ```
 
-I then wrote a query to produce some summary statistics using the UNION argument.
+I first wrote a query to see the date range of the dataset.
+
+```
+SELECT MIN(date) AS FirstRecord, MAX(date) AS LastRecord FROM walmartdata
+```
+
+![Date Range](Images/walmart_date_range.png)
+
+As we can see, the dataset ranges from January 2010 to December 2012. I then wrote a query to produce some summary statistics using the UNION argument.
+
+```
+SELECT 'total', ROUND(SUM(weekly_sales::DECIMAL),2) As revenue
+FROM walmartdata
+UNION
+SELECT 'average', ROUND(AVG(weekly_sales::DECIMAL),2)
+FROM walmartdata
+UNION
+SELECT 'min', min(weekly_sales)
+FROM walmartdata
+UNION
+SELECT 'max', max(weekly_sales)
+FROM walmartdata
+```
+
+![Summary Statistics](Images/walmart_summary_statistics.png)
+
+Over the span of the three years, Walmart had a total revenue of $6,737,218,987.11. The minimum weekly revenue was $209,986.25, the maximum was $3,818,686.45, and the average was $1,046,964.88.
