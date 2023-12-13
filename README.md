@@ -158,6 +158,8 @@ GROUP BY Store)
 
 After identifying an average of $149,715,977.49, I then looked at the stores with total revenues above the average and below the average and found their respective medians so as to divide the two groups to create the four categories.
 
+### High Performance and Above Average Performance Bins
+
 
 
 
