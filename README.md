@@ -197,6 +197,11 @@ WHERE Total_Revenue BETWEEN 149715977.49 AND 207445542.27
 
 ![Mid High Stores](Images/mid_high_performance_stores.png)
 
+This identified nine Mid-High Performance stores.
+
+### Mid-Low Performance and Low Performance Bins
+
+
 
 
 
