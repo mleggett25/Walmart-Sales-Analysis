@@ -283,7 +283,6 @@ ADD Performance varchar(255)
 UPDATE high_performance_stores
 SET performance = 'High'
 ```
-
 ```
 ALTER TABLE mid_high_performance_stores
 ADD Performance varchar(255)
@@ -292,7 +291,6 @@ ADD Performance varchar(255)
 UPDATE mid_high_performance_stores
 SET performance = 'Mid-High'
 ```
-
 ```
 ALTER TABLE mid_low_performance_stores
 ADD Performance varchar(255)
@@ -301,7 +299,6 @@ ADD Performance varchar(255)
 UPDATE mid_low_performance_stores
 SET performance = 'Mid-Low'
 ```
-
 ```
 ALTER TABLE low_performance_stores
 ADD Performance varchar(255)
