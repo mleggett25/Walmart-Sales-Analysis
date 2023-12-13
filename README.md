@@ -139,11 +139,28 @@ ORDER BY Total_Revenue DESC
 
 ## Segmentation and Binning
 
-To identify which stores are higher or lower performers than others, I decided to create a new column that would segment the data into four bins by identifying each store as either:
+To identify which stores are higher or lower performers than others, I created a new column that would segment the data into four bins by identifying each store as either:
 1. High Performance
 2. Above Average Performance
 3. Below Average Performance
 4. Low Performance
+
+First, I found the average total revenue of the stores.
+
+```
+SELECT AVG(Total_Revenue) AS Average
+FROM (SELECT store As Store, ROUND(SUM(weekly_sales::DECIMAL),2) As Total_Revenue
+FROM walmartdata
+GROUP BY Store)
+```
+
+![Store Average](Images/walmart_store_average.png)
+
+After identifying an average of $149,715,977.49, I then looked at the stores with total revenues above the average and below the average and found their respective medians so as to divide the two groups to create the four categories.
+
+
+
+
 
 
 
