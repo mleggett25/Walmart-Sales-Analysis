@@ -141,8 +141,8 @@ ORDER BY Total_Revenue DESC
 
 To identify which stores are higher or lower performers than others, I created a new column that would segment the data into four bins by identifying each store as either:
 1. High Performance
-2. Above Average Performance
-3. Below Average Performance
+2. Mid-High Performance
+3. Mid-Low Performance
 4. Low Performance
 
 First, I found the average total revenue of the stores.
@@ -158,8 +158,44 @@ GROUP BY Store)
 
 After identifying an average of $149,715,977.49, I then looked at the stores with total revenues above the average and below the average and found their respective medians so as to divide the two groups to create the four categories.
 
-### High Performance and Above Average Performance Bins
+### High Performance and Mid-High Performance Bins
 
+I wrote a query that found the median of those stores that had total revenue greater than the average total revenue of all stores.
+
+```
+SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY Total_Revenue) AS Above_Avg_Median
+FROM (SELECT store AS Store, Total_Revenue
+FROM (SELECT store As Store, ROUND(SUM(weekly_sales::DECIMAL),2) As Total_Revenue
+FROM walmartdata
+GROUP BY Store)
+WHERE Total_Revenue > 149715977.49)
+```
+
+![Above Average Median](Images/above_average_median.png)
+
+I then wrote a query to identify the High Performance stores by selecting the stores with total revenues greater than the above average median.
+
+```
+SELECT store AS Store, Total_Revenue
+FROM (SELECT store As Store, ROUND(SUM(weekly_sales::DECIMAL),2) As Total_Revenue
+FROM walmartdata
+GROUP BY Store)
+WHERE Total_Revenue > 207445542.27
+```
+
+![High Performance Stores](Images/high_performance_stores.png)
+
+This identified ten High Performance stores. Next, I wrote a query to identify the Mid-High Performance stores by selecting the stores wtih total revenues less than the above average median, but greater than the average total revenue of all stores.
+
+```
+SELECT store AS Store, Total_Revenue
+FROM (SELECT store As Store, ROUND(SUM(weekly_sales::DECIMAL),2) As Total_Revenue
+FROM walmartdata
+GROUP BY Store)
+WHERE Total_Revenue BETWEEN 149715977.49 AND 207445542.27
+```
+
+![Mid High Stores](Images/mid_high_performance_stores.png)
 
 
 
