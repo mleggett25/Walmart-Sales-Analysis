@@ -125,4 +125,17 @@ FROM walmartdata
 
 ![Summary Statistics](Images/walmart_summary_statistics.png)
 
-Over the span of the three years, Walmart had a total revenue of $6,737,218,987.11. The minimum weekly revenue was $209,986.25, the maximum was $3,818,686.45, and the average was $1,046,964.88.
+Over the span of the three years, Walmart had a total revenue of $6,737,218,987.11. The minimum weekly revenue was $209,986.25, the maximum was $3,818,686.45, and the average was $1,046,964.88. Next, I looked at the total revenue for each store and sorted the total revenue in descending order to see the how each store performed.
+
+```
+SELECT store As Store, ROUND(SUM(weekly_sales::DECIMAL),2) As Total_Revenue
+FROM walmartdata
+GROUP BY Store
+ORDER BY Total_Revenue DESC
+```
+
+![Store Total Revenue](Images/walmart_stores_total_revenue.png)
+
+
+
+
