@@ -185,7 +185,7 @@ WHERE Total_Revenue > 207445542.27
 
 ![High Performance Stores](Images/high_performance_stores.png)
 
-This identified ten High Performance stores. Next, I wrote a query to identify the Mid-High Performance stores by selecting the stores wtih total revenues less than the above average median, but greater than the average total revenue of all stores.
+This identified ten High Performance stores. Next, I wrote a query to identify the Mid-High Performance stores by selecting the stores with total revenues less than the above average median, but greater than the average total revenue of all stores.
 
 ```
 SELECT store AS Store, Total_Revenue
@@ -221,7 +221,7 @@ SELECT store AS Store, Total_Revenue
 FROM (SELECT store As Store, ROUND(SUM(weekly_sales::DECIMAL),2) As Total_Revenue
 FROM walmartdata
 GROUP BY Store)
-WHERE Total_Revenue BETWEEN 149715977.49 AND 207445542.27
+WHERE Total_Revenue BETWEEN 85365979.53 AND 149715977.49
 ```
 
 ![Mid Low Performance Stores](Images/mid_low_performance_stores.png)
