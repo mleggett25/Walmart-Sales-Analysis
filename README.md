@@ -195,13 +195,50 @@ GROUP BY Store)
 WHERE Total_Revenue BETWEEN 149715977.49 AND 207445542.27
 ```
 
-![Mid High Stores](Images/mid_high_performance_stores.png)
+![Mid High Performance Stores](Images/mid_high_performance_stores.png)
 
 This identified nine Mid-High Performance stores.
 
 ### Mid-Low Performance and Low Performance Bins
 
+I wrote a query that found the median of those stores that had total revenue less than the average total revenue of all stores.
 
+```
+SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY Total_Revenue) AS Below_Avg_Median FROM
+(SELECT store AS Store, Total_Revenue
+FROM (SELECT store As Store, ROUND(SUM(weekly_sales::DECIMAL),2) As Total_Revenue
+FROM walmartdata
+GROUP BY Store)
+WHERE Total_Revenue < 149715977.49)
+```
+
+![Below Average Median](Images/below_average_median.png)
+
+I then wrote a query to identify the Mid-Low Performance stores by selecting the stores with total revenues greater than the below average median, but less than the average total revenue of all stores.
+
+```
+SELECT store AS Store, Total_Revenue
+FROM (SELECT store As Store, ROUND(SUM(weekly_sales::DECIMAL),2) As Total_Revenue
+FROM walmartdata
+GROUP BY Store)
+WHERE Total_Revenue BETWEEN 149715977.49 AND 207445542.27
+```
+
+![Mid Low Performance Stores](Images/mid_low_performance_stores.png)
+
+This identified thirteen Mid-Low Performance stores. Next, I wrote a query to identify the Low Performance stores by selecting the stores with total revenue less than the below average median.
+
+```
+SELECT store AS Store, Total_Revenue
+FROM (SELECT store As Store, ROUND(SUM(weekly_sales::DECIMAL),2) As Total_Revenue
+FROM walmartdata
+GROUP BY Store)
+WHERE Total_Revenue < 85365979.53
+```
+
+![Low Performance Stores](Images/low_performance_stores.png)
+
+This identified thirteen Low Performance stores.
 
 
 
