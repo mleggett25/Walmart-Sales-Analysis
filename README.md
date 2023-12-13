@@ -139,9 +139,10 @@ ORDER BY Total_Revenue DESC
 ## Segmentation and Binning
 
 To identify which stores are higher or lower performers than others, I decided to create a new column that would segment the data into three bins by identifying each store as either:
-1. High Performing
-2. Average Performing
-3. Low Performing
+1. High Performance
+2. Above Average Performance
+3. Below Average Performance
+4. Low Performance
 
 
 
