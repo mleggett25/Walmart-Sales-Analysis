@@ -238,10 +238,76 @@ WHERE Total_Revenue < 85365979.53
 
 ![Low Performance Stores](Images/low_performance_stores.png)
 
-This identified thirteen Low Performance stores.
+This identified thirteen Low Performance stores. With the stores categorized, I wrote queries that created tables for each of the four categories.
 
+```
+SELECT store AS Store, Total_Revenue
+INTO High_Performance_Stores
+FROM (SELECT store As Store, ROUND(SUM(weekly_sales::DECIMAL),2) As Total_Revenue
+FROM walmartdata
+GROUP BY Store)
+WHERE Total_Revenue > 207445542.27
+```
+```
+SELECT store AS Store, Total_Revenue
+INTO Mid_High_Performance_Stores
+FROM (SELECT store As Store, ROUND(SUM(weekly_sales::DECIMAL),2) As Total_Revenue
+FROM walmartdata
+GROUP BY Store)
+WHERE Total_Revenue BETWEEN 149715977.49 AND 207445542.27
+```
+```
+SELECT store AS Store, Total_Revenue
+INTO Mid_Low_Performance_Stores
+FROM (SELECT store As Store, ROUND(SUM(weekly_sales::DECIMAL),2) As Total_Revenue
+FROM walmartdata
+GROUP BY Store)
+WHERE Total_Revenue BETWEEN 85365979.53 AND 149715977.49
+```
+```
+SELECT store AS Store, Total_Revenue
+INTO Low_Performance_Stores
+FROM (SELECT store As Store, ROUND(SUM(weekly_sales::DECIMAL),2) As Total_Revenue
+FROM walmartdata
+GROUP BY Store)
+WHERE Total_Revenue < 85365979.53
+```
 
+For each of these tables, I then created a 'performance' column and filled the values with either 'High', 'Mid-High', 'Mid-Low', or 'Low' depending on the respective table.
 
+```
+ALTER TABLE high_performance_stores
+ADD Performance varchar(255)
+```
+```
+UPDATE high_performance_stores
+SET performance = 'High'
+```
+```
+ALTER TABLE mid_high_performance_stores
+ADD Performance varchar(255)
+```
+```
+UPDATE mid_high_performance_stores
+SET performance = 'Mid-High'
+```
+```
+ALTER TABLE mid_low_performance_stores
+ADD Performance varchar(255)
+```
+```
+UPDATE mid_low_performance_stores
+SET performance = 'Mid-Low'
+```
+```
+ALTER TABLE low_performance_stores
+ADD Performance varchar(255)
+```
+```
+UPDATE low_performance_stores
+SET performance = 'Low'
+```
+```
 
 
 
