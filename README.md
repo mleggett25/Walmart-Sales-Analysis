@@ -108,7 +108,7 @@ SELECT MIN(date) AS FirstRecord, MAX(date) AS LastRecord FROM walmartdata
 
 ![Date Range](Images/walmart_date_range.png)
 
-As we can see, the dataset ranges from January 2010 to December 2012. I then wrote a query to produce some summary statistics using the UNION argument.
+As we can see, the dataset ranges from February 5, 2010 to October 26, 2012. I then wrote a query to produce some summary statistics using the UNION argument.
 
 ```
 SELECT 'total', ROUND(SUM(weekly_sales::DECIMAL),2) As revenue
