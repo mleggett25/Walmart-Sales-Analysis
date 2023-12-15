@@ -335,7 +335,7 @@ ON wd.store = sp.store
 
 With this new data table, the data is ready for export into an Excel file and ready for visualizations and analysis.
 
-## Analysis, Concolusions, & Future Analysis
+## Analysis, Conclusions, & Future Analysis
 
 Please refer to the PowerPoint in the files.
 
